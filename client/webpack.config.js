@@ -23,10 +23,19 @@ module.exports = () => {
         template: './index.html',
         title: 'Just Another Text Editor'
       }),
-      new GenerateSW(),
-      // TODO : Make some Manifest.json code here
+      new GenerateSW({
+        runtimeCaching: [{
+          urlPattern: new RegExp("(.+)\.(png|svg|jpg|jpeg|gif)$"),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxEntries: 5
+            }
+          }
+        }]
+      }),
       new WebpackPwaManifest({
-        // TODO: Create a manifest.json:
         name: 'Just Another Text Editor',
         short_name: 'JATE',
         orientation: 'portrait',
@@ -45,6 +54,10 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
         {
           test: /\.m?js$/,
