@@ -37,7 +37,10 @@ module.exports = () => {
       }),
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
-        short_name: 'JATE',
+        description: 'Take Javascript notes in a browser with syntax highlighting!',
+        short_name: 'J.A.T.E.',
+        theme_color: '#225ca3',
+        background_color: '#225ca3',
         orientation: 'portrait',
         display: 'standalone',
         publicPath: './',
