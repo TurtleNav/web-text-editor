@@ -41,7 +41,7 @@ module.exports = () => {
         orientation: 'portrait',
         display: 'standalone',
         publicPath: './',
-        fingerprints: true,
+        fingerprints: false,
         icons: [{
           src: path.resolve('./src/images/logo.png'),
           sizes: [96, 128, 192, 256, 512]
