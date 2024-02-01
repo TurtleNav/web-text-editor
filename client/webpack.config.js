@@ -25,6 +25,19 @@ module.exports = () => {
       }),
       new GenerateSW(),
       // TODO : Make some Manifest.json code here
+      new WebpackPwaManifest({
+        // TODO: Create a manifest.json:
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        orientation: 'portrait',
+        display: 'standalone',
+        publicPath: './',
+        fingerprints: true,
+        icons: [{
+          src: path.resolve('./src/images/logo.png'),
+          sizes: [96, 128, 192, 256, 512]
+        }]
+      })
     ],
 
     module: {
